@@ -9,3 +9,8 @@ $user = new User([
 ]);
 
 print_r($user);
+
+echo '<br><br>';
+$user->email = 'lucas_alterado@cod3r.com.br';
+
+print_r($user->email);
