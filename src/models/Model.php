@@ -32,12 +32,33 @@ class Model
         }
     }
 
+    public static function get($filters = [], $columns = '*')
+    {
+        $objects = [];
+        $result = static::getResultSetFromSelect($filters, $columns);
+
+        if ($result) {
+            $class = get_called_class(); // Obtém o nome da classe em que o método estático é chamado.
+
+            while ($row = $result->fetch_assoc()) {
+                array_push($objects, new $class($row));
+            }
+        }
+
+        return $objects;
+    }
+
     // Gera o select conforme os parametros passados
-    public static function getSelect($filters = [], $columns = '*')
+    public static function getResultSetFromSelect($filters = [], $columns = '*')
     {
         $sql = "select $columns from " . static::$tableName . static::getFilters($filters);
+        $result = Database::getResultFromQuery($sql);
 
-        return $sql;
+        if ($result->num_rows === 0) {
+            return null;
+        } else {
+            return $result;
+        }
     }
 
     // Filtro para o SQL
