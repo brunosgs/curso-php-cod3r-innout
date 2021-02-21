@@ -48,6 +48,14 @@ class Model
         return $objects;
     }
 
+    public static function getOne($filters = [], $columns = '*')
+    {
+        $class = get_called_class(); // Obtém o nome da classe em que o método estático é chamado.
+        $result = static::getResultSetFromSelect($filters, $columns);
+
+        return $result ? new $class($result->fetch_assoc()) : null;
+    }
+
     // Gera o select conforme os parametros passados
     public static function getResultSetFromSelect($filters = [], $columns = '*')
     {
