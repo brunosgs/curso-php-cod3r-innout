@@ -48,6 +48,7 @@ class Model
         return $objects;
     }
 
+    // Localiza o usuário no banco de dados
     public static function getOne($filters = [], $columns = '*')
     {
         $class = get_called_class(); // Obtém o nome da classe em que o método estático é chamado.
