@@ -9,7 +9,7 @@ if (count($_POST) > 0) {
     try {
         $user = $login->checkLogin();
 
-        echo "Usuário {$user->name} logado :)";
+        header("Location: DayRecordsController.php");
     } catch (AppException $e) {
         $exception = $e;
     }
