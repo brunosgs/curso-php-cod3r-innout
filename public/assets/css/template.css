@@ -1,0 +1,40 @@
+body {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 64px 1fr 64px;
+    grid-template-areas:
+        "header header"
+        "sidebar content"
+        "sidebar footer";
+    height: 100vh;
+    margin: 0;
+    background-color: #ddd;
+}
+
+body.hide-sidebar {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "header"
+        "content"
+        "footer";
+}
+
+body.hide-sidebar aside.sidebar {
+    display: none;
+}
+
+header.header {
+    grid-area: header;
+}
+
+aside.sidebar {
+    grid-area: sidebar;
+}
+
+main.content {
+    grid-area: content;
+}
+
+footer.footer {
+    grid-area: footer;
+}
