@@ -63,6 +63,7 @@ header.header .dropdown {
 
 header.header .dropdown:hover {
     background-color: rgba(0, 0, 0, .1);
+    transition: 0.10s;
 }
 
 header.header .dropdown-button {
@@ -80,7 +81,7 @@ header.header .dropdown-content {
     position: absolute;
     min-width: 100%;
     background-color: #f9f9f9;
-    padding: 10px 0px;
+    padding: 15px 0px;
     z-index: 100;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, .2);
 }
@@ -92,15 +93,21 @@ header.header .dropdown:hover .dropdown-content {
 header.header .dropdown-content ul {
     list-style: none;
     padding-left: 0;
+    margin-bottom: 0;
 }
 
 header.header .dropdown-content a {
+    display: flex;
+    align-items: center;
     text-decoration: none;
     color: #222222;
+    padding: 7px;
+    font-size: 1.1rem;
 }
 
 header.header .dropdown-content a:hover {
     background-color: rgba(0, 0, 0, .05);
+    transition: 0.10s;
 }
 
 aside.sidebar {
