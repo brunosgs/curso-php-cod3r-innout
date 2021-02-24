@@ -3,6 +3,7 @@
     <span><i class="icofont-heart text-danger mx-1"></i></span>
     <span>por COD3R e replicado por Bruno</span>
 </footer>
+<script src="assets/js/app.js"></script>
 </body>
 
 </html>
