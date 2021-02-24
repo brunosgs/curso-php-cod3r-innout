@@ -1,3 +1,4 @@
+/* Configuração do css grid */
 body {
     display: grid;
     grid-template-columns: 250px 1fr;
@@ -11,6 +12,7 @@ body {
     background-color: #ddd;
 }
 
+/* Quando a classe for aplicada no body, faz com que suma o sidebar(menu)*/
 body.hide-sidebar {
     grid-template-columns: 1fr;
     grid-template-areas:
@@ -25,6 +27,29 @@ body.hide-sidebar aside.sidebar {
 
 header.header {
     grid-area: header;
+    display: flex;
+    background-color: #1976d2;
+    align-items: center;
+    z-index: 10;
+    box-shadow:
+        0 2px 4px -1px rgba(0, 0, 0, .2),
+        0 4px 4px 0px rgba(0, 0, 0, .14),
+        0 1px 10px 0px rgba(0, 0, 0, .12);
+}
+
+header.header .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 2rem;
+    flex-basis: 250px;
+    height: 64px;
+}
+
+header.header .menu-toggle {
+    color: #ffffff;
+    cursor: pointer;
 }
 
 aside.sidebar {
