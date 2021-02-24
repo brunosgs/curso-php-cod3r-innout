@@ -111,7 +111,38 @@ header.header .dropdown-content a:hover {
 }
 
 aside.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     grid-area: sidebar;
+    box-shadow: -5px 0px 25px 1px rgba(0, 0, 0, 0.4);
+    background-color: #ffffff;
+}
+
+aside.sidebar .menu {
+    width: 100%;
+    flex-grow: 1;
+}
+
+aside.sidebar .menu ul.nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+aside.sidebar .menu li.nav-item {
+    margin: 0;
+    padding: 10px 0px 10px 25px;
+}
+
+aside.sidebar .menu li.nav-item:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+aside.sidebar .menu li.nav-item a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #555555;
 }
 
 main.content {
