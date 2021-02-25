@@ -145,6 +145,37 @@ aside.sidebar .menu li.nav-item a {
     color: #555555;
 }
 
+aside.sidebar .sidebar-widgets {
+   position: sticky;
+   bottom: 20px;
+}
+
+aside.sidebar .sidebar-widget {
+    display: flex;
+    align-items: center;
+}
+
+.division {
+    widows: 80%;
+    border: solid 1px #eeeeee;
+}
+
+aside.sidebar .sidebar-widget .icon {
+    font-size: 3.4rem;
+    margin: 2px 10px 2px 0;
+}
+
+aside.sidebar .sidebar-widget .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+aside.sidebar .info .main {
+    font-size: 2rem;
+}
+
 main.content {
     grid-area: content;
 }
