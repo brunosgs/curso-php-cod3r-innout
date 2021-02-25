@@ -146,8 +146,8 @@ aside.sidebar .menu li.nav-item a {
 }
 
 aside.sidebar .sidebar-widgets {
-   position: sticky;
-   bottom: 20px;
+    position: sticky;
+    bottom: 20px;
 }
 
 aside.sidebar .sidebar-widget {
@@ -178,6 +178,36 @@ aside.sidebar .info .main {
 
 main.content {
     grid-area: content;
+    background-color: #ffffff;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.2);
+}
+
+main.content .content-title {
+    display: flex;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #cccccc;
+}
+
+main.content .content-title .icon {
+    font-size: 3rem;
+}
+
+main.content .content-title h1 {
+    color: #444444;
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin: 0;
+}
+
+main.content .content-title h2 {
+    color: #848484;
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin: 0;
 }
 
 footer.footer {
@@ -189,4 +219,8 @@ footer.footer {
     font-size: 1.2rem;
     background-color: #222222;
     color: #ffffff;
+}
+
+.record {
+    font-size: 2.2rem;
 }
