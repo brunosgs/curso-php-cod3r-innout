@@ -66,6 +66,12 @@ header.header .dropdown:hover {
     transition: 0.10s;
 }
 
+header.header .avatar{
+    height: 75%;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
 header.header .dropdown-button {
     display: flex;
     justify-content: center;
