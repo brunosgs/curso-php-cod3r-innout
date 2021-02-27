@@ -70,6 +70,20 @@ class Model
         }
     }
 
+    // Salva no banco de dados
+    public function save()
+    {
+        $sql = "insert into" . static::$tableName . " (" . implode(",", static::$columns) . ") values (";
+
+        foreach (static::$columns as $col) {
+            $sql .= static::getFormatedValue($this->$col) . ", ";
+        }
+
+        $sql[strlen($sql) - 1] = ')';
+        $id = Database::executeSQL($sql);
+        $this->$id = $id;
+    }
+
     // Filtro para o SQL
     private static function getFilters($filters)
     {
