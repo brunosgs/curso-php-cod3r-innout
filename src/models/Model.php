@@ -73,13 +73,13 @@ class Model
     // Salva no banco de dados
     public function save()
     {
-        $sql = "insert into" . static::$tableName . " (" . implode(",", static::$columns) . ") values (";
+        $sql = "insert into " . static::$tableName . " (" . implode(", ", static::$columns) . ") values (";
 
         foreach (static::$columns as $col) {
             $sql .= static::getFormatedValue($this->$col) . ", ";
         }
-
-        $sql[strlen($sql) - 1] = ')';
+        
+        $sql[strlen($sql) - 2] = ')';
         $id = Database::executeSQL($sql);
         $this->$id = $id;
     }
