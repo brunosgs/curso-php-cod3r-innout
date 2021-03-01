@@ -60,7 +60,7 @@ function populateWorkingHours($userId, $initialDate, $regularRate, $extraRate, $
             $columns = array_merge($columns, $template);
             $workingHours = new WorkingHours($columns);
 
-            $workingHours->save();
+            $workingHours->insert();
         }
 
         $currentDate = getNextDay($currentDate)->format('Y-m-d');

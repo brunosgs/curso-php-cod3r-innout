@@ -71,17 +71,32 @@ class Model
     }
 
     // Salva no banco de dados
-    public function save()
+    public function insert()
     {
         $sql = "insert into " . static::$tableName . " (" . implode(", ", static::$columns) . ") values (";
 
         foreach (static::$columns as $col) {
             $sql .= static::getFormatedValue($this->$col) . ", ";
         }
-        
+
         $sql[strlen($sql) - 2] = ')';
         $id = Database::executeSQL($sql);
         $this->$id = $id;
+    }
+    
+    //Atualiza os dados
+    public function update()
+    {
+        $sql = "update " . static::$tableName . " set ";
+
+        foreach (static::$columns as $col) {
+            $sql .= "${col} = " . static::getFormatedValue($this->$col) . ", ";
+        }
+
+        $sql[strlen($sql) - 1] = '';
+        $sql .= "where id = {$this->id}";
+
+        Database::executeSQL($sql);
     }
 
     // Filtro para o SQL
