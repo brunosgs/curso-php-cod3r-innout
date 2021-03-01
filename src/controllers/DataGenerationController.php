@@ -46,13 +46,15 @@ function getDayTemplateByOdds($regularRate, $extraRate, $lazyRate)
 function populateWorkingHours($userId, $initialDate, $regularRate, $extraRate, $lazyRate)
 {
     $currentDate = $initialDate;
-    $today = new DateTime();
+    $yesterday = new DateTime();
+    $yesterday->modify('-1 day');
+
     $columns = [
         'user_id' => $userId,
         'work_date' => $currentDate
     ];
 
-    while (isBefore($currentDate, $today)) {
+    while (isBefore($currentDate, $yesterday)) {
         if (!isWeekend($currentDate)) {
             $template = getDayTemplateByOdds($regularRate, $extraRate, $lazyRate);
             $columns = array_merge($columns, $template);

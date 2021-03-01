@@ -1,7 +1,7 @@
 <?php
 // Configurações de fuso horário para data/hora e localidade para aplicação 
 date_default_timezone_set('America/Sao_Paulo');
-setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'portuguese');
+setlocale(LC_TIME, 'Brazil', 'pt_BR.utf-8', 'portuguese');
 
 // Constantes gerais
 define('DAILY_TIME', 60 * 60 * 8);
