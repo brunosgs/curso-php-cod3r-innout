@@ -80,7 +80,6 @@ class Model
         }
 
         $sql[strlen($sql) - 2] = ')';
-        var_dump($sql);
         $id = Database::executeSQL($sql);
         $this->$id = $id;
     }
@@ -97,7 +96,6 @@ class Model
         $sql[strlen($sql) - 1] = ' ';
         $sql .= "where id = {$this->id}";
 
-        var_dump($sql);
         Database::executeSQL($sql);
     }
 

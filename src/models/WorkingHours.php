@@ -63,10 +63,8 @@ class WorkingHours extends Model
         $this->$timeColumn = $time;
 
         if($this->id) {
-            echo "Atualiza<br>";
             $this->update();
         } else {
-            echo "Insere<br>";
             $this->insert();
         }
     }
