@@ -62,10 +62,66 @@ class WorkingHours extends Model
 
         $this->$timeColumn = $time;
 
-        if($this->id) {
+        if ($this->id) {
             $this->update();
         } else {
             $this->insert();
         }
+    }
+
+    function getWorkedInterval()
+    {
+        [$t1, $t2, $t3, $t4] = $this->getTimes();
+        $morning = new DateInterval('PT0S'); // Criando um DateInterval que tem 0 segundos.
+        $evening = new DateInterval('PT0S');
+
+        if ($t1) {
+            $morning = $t1->diff(new DateTime());
+        }
+
+        if ($t2) {
+            $morning = $t1->diff($t2);
+        }
+
+        if ($t3) {
+            $evening = $t3->diff(new DateTime());
+        }
+
+        if ($t4) {
+            $evening = $t3->diff($t4);
+        }
+
+        return sumIntervals($morning, $evening);
+    }
+
+    private function getTimes()
+    {
+        $times = [];
+
+        if ($this->time1) {
+            array_push($times, getDateFromString($this->time1));
+        } else {
+            array_push($times, null);
+        }
+
+        if ($this->time2) {
+            array_push($times, getDateFromString($this->time2));
+        } else {
+            array_push($times, null);
+        }
+
+        if ($this->time3) {
+            array_push($times, getDateFromString($this->time3));
+        } else {
+            array_push($times, null);
+        }
+
+        if ($this->time4) {
+            array_push($times, getDateFromString($this->time4));
+        } else {
+            array_push($times, null);
+        }
+
+        return $times;
     }
 }
