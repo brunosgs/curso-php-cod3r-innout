@@ -9,3 +9,5 @@ $lunchInterval = $wh->getLunchInterval()->format('%H:%I:%S');
 var_dump($workedInterval);
 echo "<br>";
 var_dump($lunchInterval);
+echo "<br>";
+print_r($wh->getExitTime());
