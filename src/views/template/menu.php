@@ -9,14 +9,14 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="day_records.php">
+                <a href="DayRecordsController.php">
                     <i class="icofont-ui-check">
                         <span class="ml-2">Registrar Ponto</span>
                     </i>
                 </a>
             </li>
             <li class="nav-item">
-                <a href=".php">
+                <a href="MonthlyReportController.php">
                     <i class="icofont-ui-calendar">
                         <span class="ml-2">Relatório Mensal</span>
                     </i>

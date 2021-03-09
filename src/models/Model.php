@@ -83,7 +83,7 @@ class Model
         $id = Database::executeSQL($sql);
         $this->$id = $id;
     }
-    
+
     //Atualiza os dados
     public function update()
     {
@@ -108,7 +108,11 @@ class Model
             $sql .= " where 1 = 1";
 
             foreach ($filters as $column => $value) {
-                $sql .= " and $column = " . static::getFormatedValue($value);
+                if ($column == 'raw') {
+                    $sql .= " and {$value}";
+                } else {
+                    $sql .= " and $column = " . static::getFormatedValue($value);
+                }
             }
         }
 

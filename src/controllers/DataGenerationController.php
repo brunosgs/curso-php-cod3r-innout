@@ -1,5 +1,4 @@
 <?php
-loadModel('WorkingHours');
 
 // É executado as querys para limpar o banco
 Database::executeSQL('delete from working_hours');
