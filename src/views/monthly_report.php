@@ -1,1 +1,2 @@
-<h1>OK</h1>
+<?php
+print_r($registries);

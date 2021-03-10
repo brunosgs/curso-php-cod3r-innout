@@ -31,6 +31,26 @@ class WorkingHours extends Model
         return $registry;
     }
 
+    public static function getMonthlyReport($userId, $date)
+    {
+        $registries = [];
+        $startDate = getFirstDayOfMonth($date)->format('Y-m-d');
+        $endDate = getLastDayOfMonth($date)->format('Y-m-d');
+
+        $result = static::getResultSetFromSelect([
+            'user_id' => $userId,
+            'raw' => "work_date between '{$startDate}' and '{$endDate}' "
+        ]);
+
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                $registries[$row['work_date']] = new WorkingHours($row);
+            }
+        }
+
+        return $registries;
+    }
+
     public function getNextTime()
     {
         if (!$this->time1) {
