@@ -58,14 +58,24 @@ function getDateFromString($str)
     return DateTimeImmutable::createFromFormat('H:i:s', $str);
 }
 
-function getFirstDayOfMonth($date) {
+function getFirstDayOfMonth($date)
+{
     $time = getDateAsDateTime($date)->getTimestamp();
 
     return new DateTime(date('Y-m-1', $time));
 }
 
-function getLastDayOfMonth($date) {
+function getLastDayOfMonth($date)
+{
     $time = getDateAsDateTime($date)->getTimestamp();
 
     return new DateTime(date('Y-m-t', $time));
+}
+
+function getSecondsFromDateInterval($interval)
+{
+    $d1 = new DateTimeImmutable();
+    $d2 = $d1->add($interval);
+
+    return $d2->getTimestamp() - $d1->getTimestamp();
 }
