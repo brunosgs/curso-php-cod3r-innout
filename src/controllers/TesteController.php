@@ -1,4 +1,4 @@
 <?php
 // Controller temporário
 
-print_r(getLastDayOfMonth('2021-04'));
+echo intdiv(7200, 3600);

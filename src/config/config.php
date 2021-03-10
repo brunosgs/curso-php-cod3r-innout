@@ -1,4 +1,7 @@
 <?php
+// Desabilita os erros do servidor
+// error_reporting(0);
+
 // Configurações de fuso horário para data/hora e localidade para aplicação 
 date_default_timezone_set('America/Sao_Paulo');
 setlocale(LC_TIME, 'Brazil', 'pt_BR.utf-8', 'portuguese');
