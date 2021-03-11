@@ -20,10 +20,10 @@ $registries = WorkingHours::getMonthlyReport($user->id, $currentDate);
 $report = [];
 $workday = 0;
 $sumOfWorkedTime = 0;
-$lastDay = getLastDayOfMonth($currentDate)->format('d');
+$lastDay = getLastDayOfMonth($selectedPeriod)->format('d');
 
 for ($day = 1; $day <= $lastDay; $day++) {
-    $date = $currentDate->format('Y-m') . '-' . sprintf('%02d', $day);
+    $date = $selectedPeriod . '-' . sprintf('%02d', $day);
     $registry = isset($registries[$date]) ? $registries[$date] : null;
 
     if (isPastWorkday($date)) {
