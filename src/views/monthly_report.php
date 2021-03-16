@@ -5,13 +5,30 @@
 
     <div>
         <form class="mb-4" action="#" method="post">
-            <select class="form-control ml-1" name="period" aria-placeholder="Selecione o período...">
-                <?php
-                foreach ($periods as $key => $month) {
-                    echo "<option value='{$key}'>{$month}</option>";
-                }
-                ?>
-            </select>
+            <div class="input-group">
+                <?php  if($user->is_admin) :?>
+                <select class="form-control mr-3" name="user" aria-placeholder="Selecione o usuário...">
+                    <option value="">Selecione o usuário</option>
+                    <?php
+                    foreach ($users as $user) {
+                        $selected = $user->id === $selectedUserId ? 'selected' : '';
+                        
+                        echo "<option value='{$user->id}' {$selected}>{$user->name}</option>";
+                    }
+                    ?>
+                </select>
+                <?php  endif ?>
+                <select class="form-control" name="period" aria-placeholder="Selecione o período...">
+                    <?php
+                    foreach ($periods as $key => $month) {
+                        $selected = $key === $selectedPeriod ? 'selected' : '';
+
+                        echo "<option value='{$key}' {$selected}>{$month}</option>";
+                    }
+                    ?>
+                </select>
+                <button class="btn btn-primary ml-3"><i class="icofont-search"></i></button>
+            </div>
         </form>
         <table class="table table-bordered table-striped table-hover">
             <thead>

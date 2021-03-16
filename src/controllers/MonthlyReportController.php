@@ -4,19 +4,27 @@ requireValidSession();
 
 $currentDate = new DateTime();
 $user = $_SESSION['user'];
+$users = null;
+$selectedUserId = $user->id;
+
+if ($user->is_admin) {
+    $users = User::get();
+    $selectedUserId = isset($_POST['user']) ? $_POST['user'] : $user->id;
+}
+
 $selectedPeriod = isset($_POST['period']) ? $_POST['period'] : $currentDate->format('Y-m');
 $periods = [];
 
-for ($yearDiff = 2; $yearDiff >= 0; $yearDiff--) {
+for ($yearDiff = 0; $yearDiff <= 2; $yearDiff++) {
     $year = date('Y') - $yearDiff;
 
-    for ($month = 1; $month <= 12; $month++) {
+    for ($month = 12; $month >= 1; $month--) {
         $date = new DateTime("{$year}-{$month}-1");
         $periods[$date->format('Y-m')] = strftime('%B de %Y', $date->getTimestamp());
     }
 }
 
-$registries = WorkingHours::getMonthlyReport($user->id, $currentDate);
+$registries = WorkingHours::getMonthlyReport($selectedUserId, $selectedPeriod);
 $report = [];
 $workday = 0;
 $sumOfWorkedTime = 0;
@@ -50,5 +58,8 @@ loadTemplateView('monthly_report', [
     'report' => $report,
     'sumOfWorkedTime' => getTimeStringFromSeconds($sumOfWorkedTime),
     'balance' => "{$sign}{$balance}",
-    'periods' => $periods
+    'periods' => $periods,
+    'users' => $users,
+    'selectedPeriod' => $selectedPeriod,
+    'selectedUserId' => $selectedUserId
 ]);
