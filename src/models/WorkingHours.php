@@ -51,6 +51,39 @@ class WorkingHours extends Model
         return $registries;
     }
 
+    public static function getAbsentUsers()
+    {
+        $today = new DateTime();
+        $result = Database::getResultFromQuery("select name 
+                                                from users 
+                                                where end_date is null
+                                                and id not in (select user_id
+                                                               from working_hours
+                                                               where work_date = '{$today->format('Y-m-d')}'
+                                                               and time1 is not null)");
+        $absentUsers = [];
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                array_push($absentUsers, $row['name']);
+            }
+        }
+
+        return $absentUsers;
+    }
+
+    public static function getWorkedTimeInMonth($yearAndMonth)
+    {
+        $startDate = (new DateTime("{$yearAndMonth}-1"))->format('Y-m-d');
+        $endDate = getLastDayOfMonth($yearAndMonth)->format('Y-m-d');
+
+        $result = static::getResultSetFromSelect([
+            'raw' => "work_date between '{$startDate}' and '{$endDate}' "
+        ], "sum(worked_time) as sum ");
+
+        return $result->fetch_assoc()['sum'];
+    }
+
     public function getNextTime()
     {
         if (!$this->time1) {

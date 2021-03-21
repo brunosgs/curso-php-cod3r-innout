@@ -70,6 +70,13 @@ class Model
         }
     }
 
+    public static function getCount($filters = [])
+    {
+        $result = static::getResultSetFromSelect($filters, 'count(*) as count');
+
+        return $result->fetch_assoc()['count'];
+    }
+
     // Salva no banco de dados
     public function insert()
     {

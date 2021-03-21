@@ -23,7 +23,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href=".php">
+                <a href="ManagerReportController.php">
                     <i class="icofont-chart-histogram">
                         <span class="ml-2">Relatório Gerencial</span>
                     </i>
