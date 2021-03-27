@@ -4,7 +4,7 @@
     include(TEMPLATE_PATH . '/messages.php');
     ?>
 
-    <a class="btn btn-lg btn-primary mb-4" href="save_user.php">Novo usuário</a>
+    <a class="btn btn-lg btn-primary mb-4" href="SaveUserController.php">Novo usuário</a>
     <table class="table table-bordered table-striped table-hover">
         <thead>
             <th>Nome</th>
@@ -21,7 +21,7 @@
                     <td><?= $user->start_date ?></td>
                     <td><?= $user->end_date ?></td>
                     <td>
-                        <a href="save_user.php?update=<?= $user->id ?>" class="btn btn-warning rounded-circle mr-2">
+                        <a href="SaveUserController.php?update=<?= $user->id ?>" class="btn btn-warning rounded-circle mr-2">
                             <i class="icofont-edit"></i>
                         </a>
                         <a href="?delete=<?= $user->id ?>" class="btn btn-danger rounded-circle">
