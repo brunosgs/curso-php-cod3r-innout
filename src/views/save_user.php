@@ -8,14 +8,14 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="name">Nome</label>
-                <input type="text" name="name" id="name" placeholder="Informe o nome" class="form-control <?= $errors['name'] ? 'is-invalid' : '' ?>" value="<?= $name ?>">
+                <input type="text" name="name" id="name" placeholder="Informe o nome" class="form-control <?= $errors['name'] ? 'is-invalid' : '' ?>" value="<?= isset($name) ? $name : null ?>">
                 <div class="invalid-feedback">
                     <?= $errors['name'] ?>
                 </div>
             </div>
             <div class="form-group col-md-6">
                 <label for="email">E-mail</label>
-                <input type="email" name="email" id="email" placeholder="Informe o email" class="form-control <?= $errors['email'] ? 'is-invalid' : '' ?>" value="<?= $email ?>">
+                <input type="email" name="email" id="email" placeholder="Informe o email" class="form-control <?= $errors['email'] ? 'is-invalid' : '' ?>" value="<?= isset($email) ? $email : null ?>">
                 <div class="invalid-feedback">
                     <?= $errors['email'] ?>
                 </div>
@@ -56,7 +56,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="is_admin">Administrador?</label>
-                <input type="checkbox" name="is_admin" id="is_admin" class="form-control <?= $errors['is_admin'] ? 'is-invalid' : '' ?>" <?= $is_admin ? 'checked' : '' ?>>
+                <input type="checkbox" name="is_admin" id="is_admin" class="form-control <?= $errors['is_admin'] ? 'is-invalid' : '' ?>" <?= isset($is_admin) ? 'checked' : '' ?>>
                 <div class="invalid-feedback">
                     <?= $errors['is_admin'] ?>
                 </div>
