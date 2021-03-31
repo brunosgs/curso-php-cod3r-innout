@@ -91,6 +91,13 @@ class Model
         $this->$id = $id;
     }
 
+    public static function deleteById($id)
+    {
+        $sql = "delete from " . static::$tableName . " where id = {$id}";
+
+        Database::executeSQL($sql);
+    }
+
     //Atualiza os dados
     public function update()
     {
