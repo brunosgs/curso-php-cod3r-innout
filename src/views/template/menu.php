@@ -1,6 +1,7 @@
 <aside class="sidebar">
     <nav class="menu mt-3">
         <ul class="nav-list">
+            <?php if ($user->is_admin) : ?>
             <li class="nav-item">
                 <a href="UsersController.php">
                     <i class="icofont-users mr-2">
@@ -8,6 +9,7 @@
                     </i>
                 </a>
             </li>
+            <?php endif ?>
             <li class="nav-item">
                 <a href="DayRecordsController.php">
                     <i class="icofont-ui-check">
@@ -22,6 +24,7 @@
                     </i>
                 </a>
             </li>
+            <?php if ($user->is_admin) : ?>
             <li class="nav-item">
                 <a href="ManagerReportController.php">
                     <i class="icofont-chart-histogram">
@@ -29,6 +32,7 @@
                     </i>
                 </a>
             </li>
+            <?php endif ?>
         </ul>
     </nav>
     <div class="sidebar-widgets">
