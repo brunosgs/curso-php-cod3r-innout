@@ -23,6 +23,11 @@ class Model
         $this->values[$key] = $value;
     }
 
+    public function getValues()
+    {
+        return $this->values;
+    }
+
     public function loadFromArray($arr, $sanitize = true)
     {
         if ($arr) {
