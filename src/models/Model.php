@@ -7,9 +7,9 @@ class Model
     protected $values = [];
 
     // Construtor
-    function __construct($arr)
+    function __construct($arr, $sanitize = true)
     {
-        $this->loadFromArray($arr);
+        $this->loadFromArray($arr, $sanitize);
     }
 
     // Métodos mágicos get/set
@@ -23,12 +23,25 @@ class Model
         $this->values[$key] = $value;
     }
 
-    public function loadFromArray($arr)
+    public function loadFromArray($arr, $sanitize = true)
     {
         if ($arr) {
+            $conn = Database::getConnection();
+
             foreach ($arr as $key => $value) {
-                $this->$key = $value;
+                $cleanValue = $value;
+
+                //Aqui esta garantido para que não tenha SQL injection
+                if ($sanitize && $cleanValue) {
+                    $cleanValue = strip_tags(trim($cleanValue));
+                    $cleanValue = htmlentities($cleanValue, ENT_NOQUOTES);
+                    $cleanValue = mysqli_real_escape_string($conn, $cleanValue);
+                }
+
+                $this->$key = $cleanValue;
             }
+
+            $conn->close();
         }
     }
 
